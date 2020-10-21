@@ -1,0 +1,6 @@
+[submodule "ccxtws"]
+	path = ccxtws
+	url = https://github.com/mangege/ccxtws.git
+[submodule "leek"]
+	path = leek
+	url = https://github.com/mangege/leek.git
