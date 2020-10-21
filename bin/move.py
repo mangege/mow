@@ -24,7 +24,7 @@ async def main():
     exchange1_options = utils.get_exchange_options(exchange1_id)
     exchange2_options = utils.get_exchange_options(exchange2_id)
     config = ArbitrageConfig({
-        'name': 'btc_bibox_huobipro_1',
+        'name': 'btc_gateio_huobipro_1',
         'base_coin': 'BTC',
         'quote_coin': 'USDT',
         'one_to_two_pure_profit_limit': 0.03,
@@ -32,8 +32,8 @@ async def main():
         'min_buy_num_limit_by_quote': 5.5,  # huobi pro 5usdt
         'max_buy_num_limit_by_quote': 20.0,  # 20 USDT
         'max_open_order_limit': 3,
-        'base_coin_num': 25,
-        'quote_coin_num': 160,
+        'base_coin_num': 0.002,
+        'quote_coin_num': 200,
         'exchange1_api_key': exchange1_options['apiKey'],
         'exchange1_secret': exchange1_options['secret'],
         'exchange2_api_key': exchange2_options['apiKey'],
@@ -42,11 +42,11 @@ async def main():
         'exchange2_id': exchange2_id,
         'exchange1_taker_fee': 0.002,
         'exchange2_taker_fee': 0.002,
-        'exchange1_withdraw_base_fee': 0.5,
-        'exchange1_withdraw_quote_fee': 0.2,
-        'exchange2_withdraw_base_fee': 0.5,
+        'exchange1_withdraw_base_fee': 0.0005,
+        'exchange1_withdraw_quote_fee': 0.0,
+        'exchange2_withdraw_base_fee': 0.0005,
         'exchange2_withdraw_quote_fee': 0.0,
-        'base_coin_alert_num': 0.5,
+        'base_coin_alert_num': 0.001,
         'quote_coin_alert_num': 10,
         'bisect_coin': False,
         'enable_transfer': False,
