@@ -50,3 +50,17 @@ PYTHONPATH=.:$PYTHONPATH python bin/move.py
 ### ccxt 与 ws
 
 理论上 ccxt 支持的交易所都支持,但 ws 只对接了几个,不支持的 ws ,需要自己改 ccxtws 库去对接.
+
+### 运行数据采集
+
+从程序的简单性(懒)考虑,运行相关的数据都是直接写到日志文件,需要自己配置 Telegraf 采集数据到 InfluxDB 之类的数据库,然后再用 Grafana 展示出来.
+
+```
+# Telegraf logparser 的两个 patterns 值
+
+# 利润
+    patterns = ["DEBUG - %{NOTSPACE:pair:tag} low buy ask_exchange %{NOTSPACE:ask_exchange:tag}, sell high bid_exchange %{NOTSPACE:bid_exchange:tag}, 交易成功,name %{NOTSPACE:name:tag} buy_num %{NUMBER:buy_num:float} 纯利润率 %{NUMBER:pure_rate:float} 大概利润 %{NUMBER:profit:float}"]
+
+# 溢价
+    patterns = ["DEBUG - %{NOTSPACE:pair:tag} low buy ask_exchange %{NOTSPACE:ask_exchange:tag}, sell high bid_exchange %{NOTSPACE:bid_exchange:tag}, - 卖价 %{NUMBER:ask_price:float} 数量 %{NUMBER:ask_num:float} - 买价 %{NUMBER:bid_price:float} 数量 %{NUMBER:bid_num:float} - 溢价 %{NUMBER:premium_rate:float} | 有溢价存在"]
+```
