@@ -54,7 +54,7 @@ async def main():
     bricklayer = Bricklayer(config)
     tasks.append(bricklayer.run())
 
+    tasks.append(utils.run_all_exchange_ws())
     await asyncio.gather(*tasks)
-    await utils.run_all_exchange_ws()
 
 asyncio.run(main())
