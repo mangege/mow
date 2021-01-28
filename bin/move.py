@@ -55,5 +55,6 @@ async def main():
     tasks.append(bricklayer.run())
 
     await asyncio.gather(*tasks)
+    await utils.run_all_exchange_ws()
 
 asyncio.run(main())
