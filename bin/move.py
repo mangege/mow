@@ -29,7 +29,7 @@ async def main():
         'quote_coin': 'USDT',
         'one_to_two_pure_profit_limit': 0.03,
         'two_to_one_pure_profit_limit': 0.03,
-        'min_buy_num_limit_by_quote': 5.5,  # huobi pro 5usdt
+        'min_buy_num_limit_by_quote': 6,  # huobi pro 5usdt
         'max_buy_num_limit_by_quote': 20.0,  # 20 USDT
         'max_open_order_limit': 3,
         'base_coin_num': 0.002,
