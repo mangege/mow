@@ -17,7 +17,7 @@ signal.signal(signal.SIGINT, signal_handler)
 
 
 async def main():
-    tasks = []
+    bricklayer_list = []
 
     exchange1_id = 'gateio'
     exchange2_id = 'huobipro'
@@ -52,9 +52,10 @@ async def main():
         'enable_transfer': False,
     })
     bricklayer = Bricklayer(config)
-    tasks.append(bricklayer.run())
+    bricklayer_list.append(bricklayer)
 
-    tasks.append(utils.run_all_exchange_ws())
+    tasks = [bricklayer.run() for bricklayer in bricklayer_list]
+    tasks.append(utils.run_all_exchange_ws(bricklayer_list))
     await asyncio.gather(*tasks)
 
 asyncio.run(main())
